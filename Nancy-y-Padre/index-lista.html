@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuestra boda — Nancy &amp; Pedro</title>
+<link rel="icon" type="image/png" href="img/Favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Jost:wght@300;400;500&family=DM+Serif+Display&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ---------- TIPOGRAFÍAS ---------- */
+  --fuente-titulos: 'DM Serif Display', Georgia, serif;   /* horas, fechas, nombres de padres */
+  --fuente-script:  'Allura', cursive;                   /* "Nancy & Pedro", nombre del invitado */
+  --fuente-texto:   'Jost', Helvetica, Arial, sans-serif;    /* párrafos y botones */
+
+  /* ---------- COLORES ---------- */
+  --terracota: #B5623C;
+  --terracota-oscuro: #8E4726;
+  --crema: #FDF5EF;
+  --crema-fondo: #F6ECE4;
+  --verde: #3F4E49;
+  --gris: #5C534D;
+  --gris-claro: #8C7A6E;
+  --linea: #E7CFBE;
+
+}
+
+*{ box-sizing: border-box; }
+body{ margin:0; background:var(--crema-fondo); font-family:var(--fuente-texto); display:flex; justify-content:center; }
+a{ color:var(--terracota); }
+a:hover{ color:var(--terracota-oscuro); }
+img{ display:block; }
+
+.invitacion{ position:relative; width:100%; max-width:470px; background:var(--crema); box-shadow:0 0 60px rgba(120,70,45,.12); padding-bottom:70px; overflow:hidden; }
+.seccion{ position:relative; padding:54px 34px 0; text-align:center; }
+.flor{ position:absolute; pointer-events:none; }
+
+.cita{ font-family:var(--fuente-titulos); font-size:21px; line-height:1.6; color:#4A5A55; font-style:italic; margin:0; }
+.cita-ref{ font-family:var(--fuente-texto); font-size:17px; color:var(--gris-claro); margin:14px 0 0; letter-spacing:.04em; }
+.monograma{ display:flex; align-items:center; justify-content:center; gap:18px; padding:46px 0 40px; }
+.monograma span.letra{ font-family:var(--fuente-titulos); font-size:62px; color:var(--terracota); line-height:1; }
+.monograma span.barra{ width:1px; height:58px; background:#D9B39C; }
+.foto-full{ width:100%; height:300px; object-fit:cover; }
+.parrafo{ font-size:16px; line-height:1.7; color:var(--gris); margin:0; }
+.nombres{ font-family:var(--fuente-script); font-size:52px; color:var(--terracota); margin:26px 0 0; line-height:1.2; }
+.fecha{ display:flex; align-items:center; justify-content:center; gap:16px; padding:34px 34px 0; }
+.fecha .raya{ flex:1; height:1px; background:#D9B39C; }
+.fecha .dia-txt{ font-size:15px; letter-spacing:.18em; color:#4A5A55; }
+.fecha .mes{ font-size:13px; letter-spacing:.22em; color:var(--gris-claro); }
+.fecha .num{ font-family:var(--fuente-titulos); font-size:54px; color:var(--verde); line-height:1; }
+.cuenta{ display:flex; justify-content:center; gap:14px; }
+.cuenta div{ min-width:62px; }
+.cuenta b{ display:block; font-family:var(--fuente-titulos); font-weight:400; font-size:40px; color:var(--terracota); line-height:1; }
+.cuenta small{ font-size:12px; letter-spacing:.14em; color:var(--gris-claro); }
+.cuenta .separador{
+  font-family:var(--fuente-titulos);
+  font-weight:400;
+  font-size:40px;
+  color:var(--terracota);
+  line-height:1;
+}
+.galeria{ padding:46px 26px 0; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.galeria img{ width:100%; object-fit:cover; }
+.etiqueta{ font-size:13px; letter-spacing:.24em; color:var(--gris-claro); margin:0 0 30px; }
+.hora{ font-family:var(--fuente-titulos); font-size:30px; color:var(--verde); line-height:1; }
+.evento{ font-size:15px; letter-spacing:.16em; color:#4A5A55; margin:12px 0 6px; }
+.lugar{ font-family:var(--fuente-titulos); font-size:19px; color:var(--gris-claro); }
+.icono{ width:52px; margin:0 auto 14px; }
+.btn{ display:inline-block; margin-top:16px; padding:12px 28px; background:var(--terracota); color:var(--crema); font-family:var(--fuente-texto); font-size:14px; letter-spacing:.1em; border:none; border-radius:999px; text-decoration:none; cursor:pointer; }
+.btn:hover{ background:var(--terracota-oscuro); color:var(--crema); }
+.btn-linea{ background:transparent; border:1px solid var(--terracota); color:var(--terracota); }
+.btn-linea:hover{ background:var(--terracota); color:var(--crema); }
+.divisor{ width:46px; height:1px; background:#D9B39C; margin:34px auto; }
+.marco{ border:1px solid var(--linea); padding:28px 22px; margin-top:20px; }
+.marco p{ font-family:var(--fuente-titulos); font-size:24px; color:var(--verde); margin:0; }
+.nombre-padre{ font-family:var(--fuente-titulos); font-size:22px; color:var(--verde); margin:0; line-height:1.5; }
+.rotulo{ font-size:13px; letter-spacing:.2em; color:var(--terracota); margin:0 0 10px; }
+.sobres{ margin:54px 26px 0; background:#EED4C4; padding:40px 30px; text-align:center; }
+.datos{ margin-top:22px; background:var(--crema); padding:22px; text-align:left; font-family:ui-monospace, monospace; font-size:14px; color:var(--verde); }
+.datos p{ margin:0 0 6px; }
+.datos span{ color:#A0918A; }
+.rsvp-caja{ position:relative; z-index:2; border-top:1px solid var(--linea); border-bottom:1px solid var(--linea); margin:26px 0; padding:24px 0; background:var(--crema); }
+.invitado{ font-family:var(--fuente-script); font-size:34px; color:var(--terracota); margin:0; }
+.pases{ font-size:15px; color:var(--gris); margin:10px 0 0; }
+.botones{ position:relative; z-index:2; display:flex; flex-direction:column; gap:12px; }
+.botones .btn{ margin-top:0; padding:15px 20px; font-size:16px; min-height:48px; }
+.despedida{ position:relative; z-index:2; font-family:var(--fuente-script); font-size:30px; color:var(--terracota); margin:46px 0 0; }
+.oculto{ display:none !important; }
+
+/* ---------- PANTALLA DEL SOBRE ---------- */
+#portada{ position:fixed; inset:0; z-index:90; background:var(--crema-fondo); display:flex; align-items:center; justify-content:center; padding:12px; overflow:hidden; }
+#escena{ position:relative; display:flex; flex-direction:column; align-items:center; gap:30px; transform-origin:center center; }
+#portada{ transition:justify-content .1s; }
+#portada.con-tarjeta #sobre-caja{ transform:translate(-14%,-30%) scale(.84); transition:transform .9s cubic-bezier(.4,0,.3,1); }
+#portada.con-tarjeta .pista, #portada.con-tarjeta p.intro{ opacity:0; transition:opacity .4s ease; }
+#portada p.intro{ font-family:var(--fuente-titulos); font-style:italic; font-size:20px; color:var(--gris-claro); margin:0; text-align:center; }
+#sobre-caja{ position:relative; width:450px; height:360px; cursor:pointer; }
+.sobre-img{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:450px; filter:drop-shadow(0 18px 26px rgba(90,50,30,.22)); transition:opacity .5s ease; }
+#sobre-cerrado{ z-index:4; opacity:1; }
+#sobre-abierto{ z-index:3; opacity:0; }
+#sobre-caja.abriendo #sobre-cerrado{ opacity:0; }
+#sobre-caja.abriendo #sobre-abierto{ opacity:1; }
+#sello{ position:absolute; left:50%; bottom:130px; transform:translateX(-50%); width:66px; height:66px; border-radius:50%; background:#F3E2D2; box-shadow:0 3px 10px rgba(80,45,25,.3), inset 0 0 0 3px rgba(255,255,255,.35); display:flex; align-items:center; justify-content:center; z-index:6; font-family:var(--fuente-titulos); font-size:22px; color:#A0562F; transition:opacity .5s ease; }
+#sobre-caja.abriendo #sello{ opacity:0; }
+.pista{ font-size:14px; letter-spacing:.2em; color:var(--terracota); margin:0; animation:latido 2.4s ease-in-out infinite; }
+.foto-vuela{ position:absolute; left:50%; bottom:44px; z-index:6; background:var(--crema); padding:7px; box-shadow:0 14px 30px rgba(80,45,25,.28); opacity:0; }
+.foto-vuela img{ width:100%; height:100%; object-fit:cover; }
+#vuela1{ width:250px; height:300px; }
+#vuela2{ width:250px; height:300px; }
+#vuela3{ width:250px; height:300px; }
+#sobre-caja.abriendo #vuela1{ animation:volar1 1.5s cubic-bezier(.2,.8,.3,1) both; }
+#sobre-caja.abriendo #vuela2{ animation:volar2 1.6s cubic-bezier(.2,.8,.3,1) .12s both; }
+#sobre-caja.abriendo #vuela3{ animation:volar3 1.5s cubic-bezier(.2,.8,.3,1) .24s both; }
+
+/* ---------- TARJETA DEL INVITADO ---------- */
+#tarjeta{ position:absolute; left:50%; top:50%; z-index:95; width:min(92vw,360px); transform:translate(-42%,-14%); animation:subir .8s cubic-bezier(.2,.8,.3,1) both; }
+#tarjeta .caja{ width:100%; max-width:360px; background:var(--crema); border:1px solid var(--linea); padding:26px 26px; text-align:center; box-shadow:0 30px 60px rgba(60,30,15,.3); }
+#tarjeta .num{ font-family:var(--fuente-titulos); font-size:44px; color:var(--terracota); margin:6px 0; line-height:1; }
+
+@keyframes subir{ from{ opacity:0; transform:translate(-42%,4%) scale(.95); } to{ opacity:1; transform:translate(-42%,-14%) scale(1); } }
+@keyframes desvanecer{ to{ opacity:0; visibility:hidden; } }
+@keyframes latido{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.06); } }
+@keyframes volar1{ 0%{ opacity:0; transform:translate(-50%,0) scale(.7); } 25%{ opacity:1; } 100%{ opacity:1; transform:translate(-160%,-230px) rotate(-13deg); } }
+@keyframes volar2{ 0%{ opacity:0; transform:translate(-50%,0) scale(.7); } 25%{ opacity:1; } 100%{ opacity:1; transform:translate(-50%,-290px) rotate(3deg); } }
+@keyframes volar3{ 0%{ opacity:0; transform:translate(-50%,0) scale(.7); } 25%{ opacity:1; } 100%{ opacity:1; transform:translate(60%,-215px) rotate(12deg); } }
+</style>
+</head>
+
+<body>
+
+<!-- ================= PANTALLA DEL SOBRE ================= -->
+<div id="portada">
+ <div id="escena">
+  <p class="intro">Nuestra invitación es para ti</p>
+  <div id="sobre-caja" onclick="abrirSobre()">
+    <!-- FOTOS QUE SALEN DEL SOBRE -->
+    <div class="foto-vuela" id="vuela1"><img src="img/fotos/06.jpg" alt="" /></div>
+    <div class="foto-vuela" id="vuela2"><img src="img/fotos/07.jpg" alt="" /></div>
+    <div class="foto-vuela" id="vuela3"><img src="img/fotos/08.jpg" alt="" /></div>
+    <!-- IMÁGENES DEL SOBRE: cerrado y abierto -->
+    <img class="sobre-img" id="sobre-cerrado" src="img/sobre.png" alt="Sobre" />
+    <img class="sobre-img" id="sobre-abierto" src="img/sobre abierto.png" alt="" />
+    <!-- SELLO: cambia N&P por un corazón escribiendo &hearts; -->
+    <div id="sello">N&amp;P</div>
+  </div>
+  <p class="pista" id="pista">TOCA EL SOBRE PARA ABRIR</p>
+
+  <!-- ================= TARJETA DEL INVITADO ================= -->
+<div id="tarjeta" class="oculto">
+  <div class="caja">
+    <div class="monograma" style="padding:0">
+      <span class="letra" style="font-size:26px">N</span>
+      <span class="barra" style="height:24px"></span>
+      <span class="letra" style="font-size:26px">P</span>
+    </div>
+    <p class="invitado" style="font-size:30px; margin-top:16px" data-invitado>Familia Ramírez Soto</p>
+    <p class="parrafo" style="margin-top:12px; font-size:14px">Sería un honor para nosostros que pudieras asistir anuestra celebración.</p>
+    <p class="etiqueta" style="margin:18px 0 0">HEMOS RESERVADO</p>
+    <p class="num" data-pases>2</p>
+    <p class="parrafo" style="font-size:14px">lugares en su honor</p>
+    <button class="btn" style="margin-top:20px" onclick="verInvitacion()">Ver la invitación</button>
+  </div>
+</div>
+ </div>
+</div>
+
+<!-- ================= INVITACIÓN ================= -->
+<div class="invitacion">
+
+  <!-- FLOR esquina superior izquierda -->
+  <img class="flor" src="img/Flores/flor_inv_01.png" alt="" style="top:0; left:0; width:100px; z-index:2" />
+
+  <!-- CITA -->
+  <div class="seccion" style="padding-top:64px; z-index:3">
+    <p class="parrafo">“El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia”</p>
+    <p class="cita-ref">— 1 Corintios 13:7</p>
+  </div>
+
+  <!-- MONOGRAMA -->
+  <div class="monograma">
+    <span class="letra">N</span><span class="barra"></span><span class="letra">P</span>
+  </div>
+
+  <!-- FOTO PRINCIPAL -->
+  <img class="foto-full" src="img/fotos/01.jpg" alt="Nancy y Pedro" style="object-position:center 40%" />
+
+  <div class="seccion" style="padding-top:40px">
+    <p class="parrafo">Nos complacería contar con su presencia en la celebración de nuestra unión.</p>
+    <p class="nombres">Nancy &amp; Pedro</p>
+  </div>
+
+  <!-- FECHA -->
+  <div class="fecha">
+    <span class="raya"></span>
+    <span class="dia-txt">SÁBADO</span>
+    <div>
+      <div class="mes">ENERO</div>
+      <div class="num">23</div>
+    </div>
+    <span class="dia-txt" style="letter-spacing:.12em">2027</span>
+    <span class="raya"></span>
+  </div>
+
+  <!-- CONTADOR (la fecha se define abajo en FECHA_BODA) -->
+  <div class="seccion" style="padding-top:34px">
+    <p class="etiqueta" style="margin-bottom:14px">FALTAN</p>
+    <div class="cuenta">
+      <div><b id="c-dias">0</b><small>DÍAS</small></div>
+      <span class="separador parrafo">:</span>
+      <div><b id="c-horas">00</b><small>HORAS</small></div>
+      <span class="separador">:</span>
+      <div><b id="c-min">00</b><small>MIN</small></div>
+      <span class="separador">:</span>
+      <div><b id="c-seg">00</b><small>SEG</small></div>
+    </div>
+  </div>
+
+  <!-- GALERÍA -->
+  <div class="galeria">
+    <img src="img/fotos/02.jpg" alt="" style="height:250px; grid-row:span 2" />
+    <img src="img/fotos/03.jpg" alt="" style="height:120px" />
+    <img src="img/fotos/04.jpg" alt="" style="height:120px" />
+  </div>
+
+  <!-- CEREMONIA Y RECEPCIÓN -->
+  <div class="seccion">
+    <!--<p class="etiqueta">CEREMONIA Y RECEPCIÓN</p>-->
+
+    <div style="padding-bottom:34px">
+      <img class="icono" src="img/icon/iglesia.png" alt="" />
+      <div class="hora">12:00 hrs.</div>
+      <div class="evento">CEREMONIA RELIGIOSA</div>
+      <div class="lugar">Parroquia del Perpetuo Socorro</div>
+      <!-- pega aquí tu link de Google Maps -->
+      <a class="btn" href="https://maps.app.goo.gl/LK7rEcp8R2GGTafXA?g_st=iw" target="_blank" rel="noopener">Ver ubicación</a>
+    </div>
+
+    <div class="divisor"></div>
+
+    <div>
+      <img class="icono" src="img/icon/copas.png" alt="" style="width:48px" />
+      <div class="hora">14:00 hrs.</div>
+      <div class="evento">RECEPCIÓN</div>
+      <div class="lugar">Rancho La Marquesa</div>
+      <a class="btn" href="https://maps.app.goo.gl/ZLNLozuci7xX3m7C6?g_st=iw" target="_blank" rel="noopener">Ver ubicación</a>
+    </div>
+  </div>
+
+  <img class="foto-full" src="img/fotos/05.jpg" alt="" style="height:320px; margin-top:54px" />
+
+  <!-- PADRES Y PADRINOS -->
+  <div class="seccion">
+    <img class="flor" src="img/Flores/flor_inv_02.png" alt="" style="left:0px; bottom:100px; width:70px" />
+    <img class="flor" src="img/Flores/flor_inv_03.png" alt="" style="right:0px; bottom:10px; width:70px" />
+
+    <p class="parrafo" style="font-size:19px; color:var(--gris-claro); margin-bottom:26px">Con nuestro amor, la bendición de Dios y de nuestros padres</p>
+
+    <div style="display:grid; gap:26px">
+      <div>
+        <p class="rotulo">PADRES DE LA NOVIA</p>
+        <p class="parrafo">Narciso García Reyes <span style="font-size:.85em;">†</span></p>
+        <p class="parrafo">Evodia Muñoz Vázquez</p>
+      </div>
+      <div>
+        <p class="rotulo">PADRES DEL NOVIO</p>
+        <p class="parrafo">Roberto Palacios Reza</p>
+        <p class="parrafo">Damiana Gómez Serna</p>
+      </div>
+    </div>
+
+    <div class="divisor" style="margin:40px auto 34px"></div>
+
+    <p class="etiqueta" style="margin-bottom:8px">PADRINOS DE VELACIÓN</p>
+    <div>
+      <p>Nombre de la madrina</p>
+      <p style="font-family:var(--fuente-script); font-size:26px; color:var(--terracota); margin:6px 0">&amp;</p>
+      <p>Nombre del padrino</p>
+    </div>
+    <p style="font-size:14px; color:#A0918A; margin:14px 0 0">Con la bendición de quienes nos acompañan en este paso.</p>
+  </div>
+
+  <!-- LLUVIA DE SOBRES -->
+  <div class="sobres">
+    <img class="icono" src="img/icon/sobre.png" alt="" style="width:54px; margin-bottom:0" />
+    <p class="etiqueta" style="margin:18px 0 14px">LLUVIA DE SOBRES</p>
+    <p class="parrafo">Tu presencia en nuestra celebración es más de lo que podríamos pedir. Si sientes que quieres dar algo extra aceptamos lluvia de sobres.</p>
+   <!----<button class="btn btn-linea" onclick="document.getElementById('datos').classList.toggle('oculto')">Ver datos bancarios</button>
+    <div class="datos oculto" id="datos">
+      <p style="font-family:var(--fuente-texto); font-size:12px; letter-spacing:.16em; color:var(--gris-claro); margin-bottom:10px">TRANSFERENCIA</p>
+      <p>Banco · <span>nombre del banco</span></p>
+      <p>Titular · <span>nombre del titular</span></p>
+      <p style="margin:0">CLABE · <span>000 000 000 000 000 000</span></p>
+    </div>-->
+  </div>
+
+  <!-- R.S.V.P -->
+  <div class="seccion" style="padding-top:60px">
+    <img class="flor" src="img/Flores/flor_inv_04.png" alt="" style="right:0px; bottom:-70px; width:120px" />
+    <p style="position:relative; z-index:2; font-family:var(--fuente-titulos); font-size:26px; letter-spacing:.12em; color:var(--verde); margin:0">R.S.V.P</p>
+    <p style="position:relative; z-index:2; font-size:14px; color:var(--gris-claro); margin:8px 0 0">Agradecemos confirmar antes del 20 de noviembre de 2026</p>
+
+    <div class="rsvp-caja">
+      <p class="invitado" data-invitado>Familia Ramírez Soto</p>
+      <p class="pases">Pases reservados: <span style="color:var(--terracota)" data-pases>2</span></p>
+    </div>
+
+    <div class="botones" id="botones">
+      <button class="btn" onclick="responder('si')">Confirmar asistencia</button>
+      <!--<button class="btn" style="background:transparent; border:1px solid #D9B39C; color:var(--gris-claro)" onclick="responder('no')">No podré asistir</button>-->
+    </div>
+
+    <div class="botones oculto" id="gracias">
+      <p style="font-family:var(--fuente-titulos); font-size:22px; color:var(--verde); margin:0 0 16px" id="gracias-txt"></p>
+      <a class="btn" id="wa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+    </div>
+
+    <p class="despedida">¡Te esperamos!</p>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   4) DATOS EDITABLES
+   ============================================================ */
+const FECHA_BODA = '2027-01-23T12:00:00';   // fecha y hora del contador
+const WHATSAPP   = '5210000000000';         // número para confirmar (con lada, sin +)
+
+/* ---------- LISTA DE INVITADOS DESDE GOOGLE SHEETS ----------
+   Pega abajo el link CSV de: Archivo > Compartir > Publicar en la web.
+   La hoja debe tener en la fila 1:  codigo | nombre | pases
+   A cada familia le mandas su link:  index.html?c=a7k3            */
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vToiAYHGRVdiSEoTxn1pshu-6aiUzAV6lIWGGXE0mccXQjxx0IGXqRRTATPAr-dEAdA02y1GuVoUWdR/pub?gid=0&single=true&output=csv';
+
+/* Lo que se muestra mientras carga, o si el código no existe */
+const POR_DEFECTO = { nombre: 'Con cariño, para ti', pases: 2 };
+
+const q = new URLSearchParams(location.search);
+const codigo = (q.get('c') || '').trim().toLowerCase();
+let invitado = POR_DEFECTO.nombre;
+let pases = POR_DEFECTO.pases;
+
+function pintarInvitado() {
+  document.querySelectorAll('[data-invitado]').forEach(function (el) { el.textContent = invitado; });
+  document.querySelectorAll('[data-pases]').forEach(function (el) { el.textContent = pases; });
+}
+pintarInvitado();
+
+if (codigo && CSV_URL.indexOf('http') === 0) {
+  fetch(CSV_URL)
+    .then(function (r) { return r.text(); })
+    .then(function (csv) {
+      csv.trim().split(/\r?\n/).slice(1).forEach(function (linea) {
+        const c = linea.split(',');
+        if ((c[0] || '').trim().toLowerCase() === codigo) {
+          invitado = (c[1] || '').trim() || POR_DEFECTO.nombre;
+          pases = parseInt(c[2], 10) || POR_DEFECTO.pases;
+        }
+      });
+      pintarInvitado();
+    })
+    .catch(function () { /* sin internet: se queda el texto por defecto */ });
+}
+
+document.querySelectorAll('[data-invitado]').forEach(function (el) { el.textContent = invitado; });
+document.querySelectorAll('[data-pases]').forEach(function (el) { el.textContent = pases; });
+
+/* ---------- contador ---------- */
+const meta = new Date(FECHA_BODA).getTime();
+const pad = function (n) { return String(n).padStart(2, '0'); };
+setInterval(function () {
+  const d = Math.max(0, meta - Date.now());
+  document.getElementById('c-dias').textContent = Math.floor(d / 86400000);
+  document.getElementById('c-horas').textContent = pad(Math.floor(d / 3600000) % 24);
+  document.getElementById('c-min').textContent = pad(Math.floor(d / 60000) % 60);
+  document.getElementById('c-seg').textContent = pad(Math.floor(d / 1000) % 60);
+}, 1000);
+
+/* ---------- sobre ---------- */
+function abrirSobre() {
+  const caja = document.getElementById('sobre-caja');
+  if (caja.classList.contains('abriendo')) return;
+  caja.classList.add('abriendo');
+  document.getElementById('pista').textContent = 'ABRIENDO…';
+  // la tarjeta entra mientras las fotos siguen volando (sube o baja este número)
+  setTimeout(function () {
+    document.getElementById('portada').classList.add('con-tarjeta');
+    document.getElementById('tarjeta').classList.remove('oculto');
+    setTimeout(ajustarEscena, 1100);
+    setTimeout(ajustarEscena, 1900);
+  }, 900);
+}
+
+function verInvitacion() {
+  document.getElementById('tarjeta').classList.add('oculto');
+  document.getElementById('portada').style.display = 'none';
+}
+
+/* ---------- ajustar la escena al alto de la pantalla ---------- */
+function ajustarEscena() {
+  const e = document.getElementById('escena');
+  if (!e || e.parentElement.style.display === 'none') return;
+  e.style.transform = 'none';
+  let top = Infinity, bot = -Infinity;
+  e.querySelectorAll('#sobre-caja, #tarjeta, .intro, .pista, .foto-vuela').forEach(function (n) {
+    if (n.classList.contains('oculto')) return;
+    const r = n.getBoundingClientRect();
+    if (!r.height) return;
+    top = Math.min(top, r.top); bot = Math.max(bot, r.bottom);
+  });
+  if (!isFinite(top)) return;
+  const alto = bot - top;
+  const s = Math.min(1, (window.innerHeight - 24) / alto);
+  const centroEscena = e.getBoundingClientRect().top + e.getBoundingClientRect().height / 2;
+  const dy = (centroEscena - (top + alto / 2)) * s;
+  e.style.transform = 'translateY(' + dy.toFixed(1) + 'px) scale(' + s.toFixed(3) + ')';
+}
+window.addEventListener('load', ajustarEscena);
+window.addEventListener('resize', ajustarEscena);
+ajustarEscena();
+
+/* ---------- confirmación ---------- */
+function responder(r) {
+  const texto = r === 'si'
+    ? '¡Hola! Confirmamos asistencia a la boda de Nancy & Pedro. ' + invitado + ' — ' + pases + ' pase(s).'
+    : '¡Hola! Lamentablemente ' + invitado + ' no podrá asistir a la boda de Nancy & Pedro.';
+  document.getElementById('gracias-txt').textContent = r === 'si'
+    ? '¡Gracias! Nos alegra saber que estarás con nosotros.'
+    : 'Gracias por avisarnos, te tendremos presente.';
+  document.getElementById('wa').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto);
+  document.getElementById('botones').classList.add('oculto');
+  document.getElementById('gracias').classList.remove('oculto');
+}
+</script>
+</body>
+</html>
