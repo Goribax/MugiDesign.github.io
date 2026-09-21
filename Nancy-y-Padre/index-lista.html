@@ -360,7 +360,7 @@ img{ display:block; }
    ============================================================ */
 const FECHA_BODA = '2027-01-23T12:00:00';   // fecha y hora del contador
 const WHATSAPP   = '523121900833';         // número para confirmar (con lada, sin +)
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbypXD8vomkq7wcTimk49bdyd-7xzVV4LRBg_Dd1-kvtaR8UFLEGzbAvAIoOwYcA4lHXoQ/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweZGF9dfz7LiP2BYaibz2ei8b8svU4ZI1cgqn0vDXGRFiUFy9iQBVm1c2xG_9iNzZ6gQ/exec';
 
 /* ---------- LISTA DE INVITADOS DESDE GOOGLE SHEETS ----------
    Pega abajo el link CSV de: Archivo > Compartir > Publicar en la web.
@@ -458,27 +458,20 @@ ajustarEscena();
 /* ---------- confirmación ---------- */
 function responder(r) {
 
-  // Guardar respuesta en Google Sheets
-  fetch(GOOGLE_SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {
-      'Content-Type': 'text/plain;charset=utf-8'
-    },
-    body: JSON.stringify({
-      codigo: codigo,
-      respuesta: r,
-      nombre: invitado,
-      pases: pases
-    })
+  // Registrar respuesta en Google Sheets
+  const url = GOOGLE_SCRIPT_URL
+    + '?codigo=' + encodeURIComponent(codigo)
+    + '&respuesta=' + encodeURIComponent(r);
+
+  fetch(url, {
+    method: 'GET',
+    mode: 'no-cors'
   });
 
   // Mensaje de WhatsApp
   const texto = r === 'si'
-    ? '¡Hola! Confirmamos asistencia a la boda de Nancy & Pedro. ' 
-      + invitado + ' — ' + pases + ' pase(s).'
-    : '¡Hola! Lamentablemente ' + invitado 
-      + ' no podrá asistir a la boda de Nancy & Pedro.';
+    ? '¡Hola! Confirmamos asistencia a la boda de Nancy & Pedro. ' + invitado + ' — ' + pases + ' pase(s).'
+    : '¡Hola! Lamentablemente ' + invitado + ' no podrá asistir a la boda de Nancy & Pedro.';
 
   document.getElementById('gracias-txt').textContent = r === 'si'
     ? '¡Gracias! Nos alegra saber que estarás con nosotros.'
